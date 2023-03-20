@@ -10,4 +10,16 @@ import { Component } from '@angular/core';
   // styles: ['']
 })
 export class AppComponent {
+  name ='ksb96';
+  imageURL = 'https://picsum.photos/200/300?grayscale';
+
+  // event binding
+  changeImage(e: KeyboardEvent){
+    this.imageURL = (e.target as HTMLInputElement).value;
+  }
+
+  //emitting events
+  logImg(event: string) {
+    console.log(event)
+  }
 }

@@ -1,1 +1,9 @@
+<!-- event binding -->
+<input (keyup)="changeImage($event)" [value]="imageURL">
+
+<!-- data flow from 1-component to another -->
+<app-post [postURL]="imageURL" (imgSelected)="logImg($event)"></app-post>
+
 <p>Angular App running fine!!:-)</p>
+<p> Hello {{ name }}</p>
+<p>{{ name.toUpperCase() }}</p>
