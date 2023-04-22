@@ -7,3 +7,12 @@ img{
     width: 200px;
     height: 100px;
 }
+
+hr{
+    margin: 20px 0;
+}
+
+.blue{
+    background-color: blue;
+    color: white;
+}

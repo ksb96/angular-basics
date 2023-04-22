@@ -11,7 +11,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   name ='ksb96';
+  currentDate = new Date();
+  cost = 200;
   imageURL = 'https://picsum.photos/200/300?grayscale';
+  images = [
+    'https://picsum.photos/200/300?grayscale',
+    'https://picsum.photos/200/300?grayscale',
+    'https://picsum.photos/200/300?grayscale'
+  ]
+  blueClass = false;
+  fontSize = 16;
 
   // event binding
   changeImage(e: KeyboardEvent){
