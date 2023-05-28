@@ -9289,14 +9289,26 @@ var _zipWith = require("./internal/operators/zipWith");
 
 var _rxjs = require("rxjs");
 var observable = new _rxjs.Observable(function (subscriber) {
+  //sync code
   // subscriber.next('hi')
   // subscriber.error('error')
   // subscriber.next('test')
   // //manually terminating
   // subscriber.complete()
-  // // subscriber.next('hello')
+  // subscriber.next('hello')
+
+  //asyn code
+  var clear = setInterval(function () {
+    subscriber.next('test');
+  }, 1000);
+  // subscriber.complete()
+
+  //avoiding memory-leak(release memory)
+  return function () {
+    clearInterval(clear);
+  };
 });
-observable.subscribe({
+var subscription = observable.subscribe({
   next: function next(value) {
     console.log(value);
   },
@@ -9304,6 +9316,10 @@ observable.subscribe({
     console.error(err);
   }
 });
+//unsubscribe
+setTimeout(function () {
+  subscription.unsubscribe();
+}, 4000);
 },{"rxjs":"../node_modules/rxjs/dist/esm5/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -9329,7 +9345,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65443" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61611" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
